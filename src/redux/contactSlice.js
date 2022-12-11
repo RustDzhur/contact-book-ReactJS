@@ -19,7 +19,6 @@ export const constactSlice = createSlice({
       );
       state.contacts.items.splice(index, 1);
     },
-
     filterContact(state, action) {
       state.filter = action.payload;
     },

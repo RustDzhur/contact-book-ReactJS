@@ -1,8 +1,18 @@
+import { useForm } from 'react-hook-form';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
+import { Form, Input, FormTitle, NameInput, Button } from './SignUp.styled';
 const signUpModal = document.querySelector('#signup-root');
 
 export const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = data => console.log(data);
+  
   return createPortal(
     <motion.div
       style={{ translateX: '-50%', translateY: '-50%' }}
@@ -22,7 +32,26 @@ export const SignUp = () => {
         },
       }}
     >
-      <h1>This is SignUP</h1>
+      <FormTitle>Registration form</FormTitle>
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+        <NameInput>Name</NameInput>
+        <Input
+          type={'text'}
+          {...register('name', { required: true })}
+        />
+        <NameInput>Email</NameInput>
+        <Input
+          type={'email'}
+          {...register('email', { required: true })}
+        />
+        <NameInput>Password</NameInput>
+        <Input
+          type={'password'}
+          {...register('password', { required: true })}
+        />
+        {errors.exampleRequired && <span>This field is required</span>}
+        <Button type="submit">Submit</Button>
+      </Form>
     </motion.div>,
     signUpModal
   );

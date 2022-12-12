@@ -2,30 +2,32 @@ import { SignUp, SignIn } from './Header.styled';
 import {
   HeaderDox,
   Wrapper,
-  LogoWrapper,
   Logo,
   ContactBookText,
   ButtonWrapper,
+  NavLogo,
 } from './Header.styled';
 import logo from 'images/logo.png';
-import { Videoo } from '../Hero/Video';
+import { Video } from '../Hero/Video';
+import { Outlet } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <>
       <HeaderDox>
         <Wrapper>
-          <LogoWrapper>
+          <NavLogo to="/">
             <Logo src={logo} alt="logo" />
             <ContactBookText>Contact book</ContactBookText>
-          </LogoWrapper>
+          </NavLogo>
           <ButtonWrapper>
-            <SignUp to="/singup">Sign Up</SignUp>
-            <SignIn to='/signin'>Sign In</SignIn>
+            <SignUp to="/signup">Sign Up</SignUp>
+            <SignIn to="/signin">Sign In</SignIn>
           </ButtonWrapper>
         </Wrapper>
+        <Video />
       </HeaderDox>
-      <Videoo />
+      <Outlet />
     </>
   );
 };

@@ -1,5 +1,9 @@
 @import-normalize; /* bring in normalize.css styles */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -25,7 +29,7 @@ li {
   padding: 0;
 }
 
-p {
+p, h1 {
   margin: 0;
   padding: 0;
 }
@@ -41,4 +45,33 @@ video {
 }
 a {
   text-decoration: none;
+}
+.signInModal {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  min-width: 280px;
+  height: 50vh;
+  background-color: white;
+}
+
+@media screen and (min-width: 470px) {
+  .signInModal {
+    min-width: 430px;
+  }
+}
+
+.signUpModal {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  min-width: 280px;
+  height: 50vh;
+  background-color: white;
+}
+
+@media screen and (min-width: 470px) {
+  .signUpModal {
+    min-width: 430px;
+  }
 }

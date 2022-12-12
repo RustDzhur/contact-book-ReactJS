@@ -5,10 +5,8 @@ export const HeaderDox = styled.header`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   width: 100%;
-  height: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background-color: inherit;
-  padding-top: 10px;
 `;
 
 export const Wrapper = styled.div`
@@ -17,12 +15,19 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 15px;
+  padding-right: 15px;
+  @media screen and (max-width: 620px){
+    justify-content: center;
+  }
 `;
 
-export const LogoWrapper = styled.div`
+export const NavLogo = styled(NavLink)`
   display: flex;
   align-items: center;
+  padding-top: 15px;
+  margin-bottom: 15px;
 `;
 
 export const Logo = styled.img`
@@ -69,7 +74,7 @@ export const SignUp = styled(NavLink)`
     #12d8fa 51%,
     #1fa2ff 100%
   );
-  margin: 10px;
+  margin-right: 15px;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
@@ -85,6 +90,9 @@ export const SignUp = styled(NavLink)`
     color: #fff;
     text-decoration: none;
   }
+  @media screen and (max-width: 340px){
+    padding: 15px 25px;
+  }
 `;
 
 export const SignIn = styled(NavLink)`
@@ -94,7 +102,6 @@ export const SignIn = styled(NavLink)`
     #93f9b9 51%,
     #1d976c 100%
   );
-  margin: 10px;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
@@ -106,8 +113,11 @@ export const SignIn = styled(NavLink)`
   display: block;
 
   :hover {
-    background-position: right center; /* change the direction of the change here */
+    background-position: right center;
     color: #fff;
     text-decoration: none;
+  }
+  @media screen and (max-width: 340px){
+    padding: 15px 25px;
   }
 `;

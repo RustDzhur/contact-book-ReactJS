@@ -1,7 +1,0 @@
-
-[
-    {"id": "id-1", "firstName": "Rosie", "secondName": "Simpson", "phoneNum": "459-12-56", "email": "rosiesimpson@gmail.com", "checked": false},
-    {"id": "id-2", "firstName": "Hermione", "secondName": "Kline", "phoneNum": "443-89-12", "email": "hermionekline@gmail.com", "checked": false},
-    {"id": "id-3", "firstName": "Eden", "secondName": "Clements", "phoneNum": "645-17-79", "email": "edenclements@gmail.com", "checked": false},
-    {"id": "id-4", "firstName": "Annie", "secondName": "Copeland", "phoneNum": "227-91-26", "email": "anniecopeland@gmail.com", "checked": false}
-]

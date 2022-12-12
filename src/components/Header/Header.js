@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom';
+import { SignUp, SignIn } from './Header.styled';
 import {
   HeaderDox,
   Wrapper,
   LogoWrapper,
   Logo,
   ContactBookText,
+  ButtonWrapper,
 } from './Header.styled';
 import logo from 'images/logo.png';
-import {Video} from '../HeaderVideo/Video'
+import { Video } from '../Hero/Video';
 
 export const Header = () => {
   return (
@@ -18,13 +19,13 @@ export const Header = () => {
             <Logo src={logo} alt="logo" />
             <ContactBookText>Contact book</ContactBookText>
           </LogoWrapper>
-          <div>
-            <Link to="/singup">Sign Up</Link>
-            <Link to="/singin">Sign In</Link>
-          </div>
+          <ButtonWrapper>
+            <SignUp to="/singup">Sign Up</SignUp>
+            <SignIn to='/signin'>Sign In</SignIn>
+          </ButtonWrapper>
         </Wrapper>
       </HeaderDox>
-    <Video/>
+      <Video />
     </>
   );
 };

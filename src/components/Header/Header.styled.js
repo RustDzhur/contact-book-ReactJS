@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderDox = styled.header`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   width: 100%;
-  height: 50px;
+  height: 70px;
   margin-bottom: 20px;
   background-color: #ffffff;
 `;
@@ -52,5 +53,59 @@ export const ContactBookText = styled.p`
     to {
       background-position: 200% center;
     }
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+`;
+
+export const SignUp = styled(NavLink)`
+  background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+
+  :hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+`;
+
+export const SignIn = styled(NavLink)`
+  background-image: linear-gradient(
+    to right,
+    #1d976c 0%,
+    #93f9b9 51%,
+    #1d976c 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+
+  :hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
   }
 `;

@@ -8,7 +8,7 @@ import {
   ButtonWrapper,
 } from './Header.styled';
 import logo from 'images/logo.png';
-import { Video } from '../Hero/Video';
+import { Videoo } from '../Hero/Video';
 
 export const Header = () => {
   return (
@@ -25,7 +25,7 @@ export const Header = () => {
           </ButtonWrapper>
         </Wrapper>
       </HeaderDox>
-      <Video />
+      <Videoo />
     </>
   );
 };

@@ -7,7 +7,8 @@ export const HeaderDox = styled.header`
   width: 100%;
   height: 70px;
   margin-bottom: 20px;
-  background-color: #ffffff;
+  background-color: inherit;
+  padding-top: 10px;
 `;
 
 export const Wrapper = styled.div`
@@ -16,6 +17,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+flex-wrap: wrap;
 `;
 
 export const LogoWrapper = styled.div`

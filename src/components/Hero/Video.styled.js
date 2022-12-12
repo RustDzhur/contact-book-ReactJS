@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import ReactPlayer from 'react-player';
 
 export const VideoContainer = styled.div`
   bottom: 0;
@@ -10,18 +9,6 @@ export const VideoContainer = styled.div`
   right: 0;
   top: 0;
   z-index: -1;
-  height: 150vh;
-  width: 120vw;
-`
-
-export const Videoo = styled(props => <ReactPlayer {...props} />)`
-  height: 100vh;
-  left: 50%;
-  min-height: 100vh;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 120vw;
 `
 
 export const Overlay = styled.div`

@@ -1,21 +1,11 @@
+import { VideoContainer } from './Video.styled';
 
-import { VideoContainer,Videoo, Overlay } from './Video.styled';
-
-export const Video = () => {
+export const Videoo = () => {
   return (
-    <>
+  
       <VideoContainer>
-        <Videoo
-          url={'https://youtu.be/Ble0j75GRKk'}
-          playing
-          loop
-          muted
-          width="100%"
-          height="100%"
-          controls={false}
-        />
+      <video src={process.env.PUBLIC_URL + '/video/video.mp4'} autoPlay loop playsInline muted></video>
       </VideoContainer>
-      <Overlay />
-    </>
+    
   );
 };

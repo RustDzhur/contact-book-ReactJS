@@ -1,17 +1,17 @@
-import { VideoContainer, Videoo, Overlay } from "./Video.styled";
+import { VideoContainer,Videoo, Overlay } from './Video.styled';
 
 export const Video = () => {
   return (
-<>
+    <>
       <VideoContainer>
         <Videoo
-          background={true}
-          height={1080}
-          loop={true}
-          responsive
-          video="780183909"
-          width={1920}
-          autoplay={true}
+          url={'https://youtu.be/Ble0j75GRKk'}
+          playing
+          loop
+          muted
+          width="100%"
+          height="100%"
+          controls={false}
         />
       </VideoContainer>
       <Overlay />

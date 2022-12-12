@@ -7,7 +7,7 @@ import {
   ContactBookText,
 } from './Header.styled';
 import logo from 'images/logo.png';
-import { Video } from 'components/HeaderVideo/Video';
+import {Video} from '../HeaderVideo/Video'
 
 export const Header = () => {
   return (
@@ -24,7 +24,7 @@ export const Header = () => {
           </div>
         </Wrapper>
       </HeaderDox>
-      <Video/>
+    <Video/>
     </>
   );
 };

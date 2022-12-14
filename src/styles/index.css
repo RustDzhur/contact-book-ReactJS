@@ -46,6 +46,13 @@ video {
 a {
   text-decoration: none;
 }
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 .signInModal {
   position: absolute;
   top: 60%;

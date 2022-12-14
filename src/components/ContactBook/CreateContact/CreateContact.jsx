@@ -1,24 +1,21 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewContact, fetchContacts } from '../../redux/operations';
+import { addNewContact, fetchContacts } from 'redux/contactBook/operations';
+import {getStateContactsUsers} from 'redux/contactBook/selectors'
 import { Layout } from './Layout';
 
 export function CreateContact() {
   const dispatch = useDispatch();
-  const { items } = useSelector(state => state.user.contacts);
-  const [firstName, setFirstName] = useState('');
-  const [secondName, setSecondName] = useState('');
+  const { items } = useSelector(getStateContactsUsers);
+  const [name, setName] = useState('');
   const [phoneNum, setPhoneNum] = useState('');
-  const [email, setEmail] = useState('');
 
   const onChangeState = e => {
     e.preventDefault();
     const newUserCard = {
-      firstName: firstName,
-      secondName: secondName,
+      name: name,
       phoneNum: phoneNum,
-      email: email,
     };
     handlerChangeState(newUserCard);
     resetForm();
@@ -33,20 +30,19 @@ export function CreateContact() {
   }
 
   const handlerChangeState = newContact => {
-    const { firstName, phoneNum, email } = newContact;
+    const { name, phoneNum } = newContact;
     const findSameContactInBase = items.find(
       item =>
-        item.firstName.toLowerCase().includes(firstName.toLowerCase()) ||
-        item.phoneNum.toLowerCase().includes(phoneNum.toLowerCase()) ||
-        item.email.toLowerCase().includes(email.toLowerCase())
+        item.name.toLowerCase().includes(name.toLowerCase()) ||
+        item.phoneNum.toLowerCase().includes(phoneNum.toLowerCase())
     );
     //если совпадает фамилия, номер телефона и электронная почта выдать сообщение
     if (findSameContactInBase) {
       alert(
         `${
-          findSameContactInBase.firstName +
+          findSameContactInBase.name +
           ' ' +
-          findSameContactInBase.secondName
+          findSameContactInBase.phoneNum
         } is already in DB`
       );
     } else {
@@ -55,23 +51,17 @@ export function CreateContact() {
   };
 
   const resetForm = () => {
-    setFirstName('');
-    setSecondName('');
+    setName('');
     setPhoneNum('');
-    setEmail('');
   };
 
   return (
     <Layout
       onChangeState={onChangeState}
-      firstName={firstName}
-      setFirstName={setFirstName}
-      secondName={secondName}
-      setSecondName={setSecondName}
+      name={name}
+      setName={setName}
       phoneNum={phoneNum}
       setPhoneNum={setPhoneNum}
-      email={email}
-      setEmail={setEmail}
     />
   );
 }
@@ -79,9 +69,7 @@ export function CreateContact() {
 CreateContact.propTypes = {
   state: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    secondName: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     phoneNum: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
   }),
 };

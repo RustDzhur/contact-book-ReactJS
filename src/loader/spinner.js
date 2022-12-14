@@ -8,8 +8,8 @@ export const Spinner = () => {
         radius={5}
         color="#4fa94d"
         ariaLabel="ball-triangle-loading"
-        wrapperClass={{}}
-        wrapperStyle=""
+        wrapperClass='spinner'
+        wrapperStyle={{}}
         visible={true}
       />
     </>

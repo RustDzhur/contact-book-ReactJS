@@ -1,10 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import { CreateContact } from 'components/CreateContact';
 import { Header } from './components/Header';
-import { SearchContact } from 'components/SearchContact';
 import './styles/App.css';
 import { SignIn } from 'components/SignIn/SignIn';
 import { SignUp } from './components/SignUp/SignUp';
+import { ContactBook } from 'components/ContactBook/ContactBook';
 
 export function App() {
   return (
@@ -12,8 +11,7 @@ export function App() {
       <Route path="/" element={<Header />}>
         <Route path="signin" element={<SignIn />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="create" element={<CreateContact />} />
-        <Route path="search" element={<SearchContact />} />
+        <Route path="contacts" element={<ContactBook />} />
       </Route>
     </Routes>
   );

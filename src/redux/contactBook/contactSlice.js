@@ -47,6 +47,7 @@ export const constactSlice = createSlice({
     [addNewContact.fulfilled]: (state, action) => {
       state.contacts.items = [action.payload, ...state.contacts.items];
       state.contacts.error = null;
+      console.log(action.payload)
     },
     [addNewContact.rejected]: (state, action) => {
       state.contacts.isLoading = 'rejected';

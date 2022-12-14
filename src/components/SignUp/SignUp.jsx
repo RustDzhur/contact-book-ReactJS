@@ -1,18 +1,26 @@
 import { useForm } from 'react-hook-form';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
+import {registeration} from 'redux/auth/operations'
 import { Form, Input, FormTitle, NameInput, Button } from './SignUp.styled';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 const signUpModal = document.querySelector('#signup-root');
 
 export const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: { something: "" } });
 
-  const onSubmit = data => console.log(data);
-  
+  const dispatch = useDispatch();
+
+  const onSubmit = data => {
+    dispatch(registeration(data));
+  };
+
   return createPortal(
     <motion.div
       style={{ translateX: '-50%', translateY: '-50%' }}
@@ -33,17 +41,11 @@ export const SignUp = () => {
       }}
     >
       <FormTitle>Registration form</FormTitle>
-      <Form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <NameInput>Name</NameInput>
-        <Input
-          type={'text'}
-          {...register('name', { required: true })}
-        />
+        <Input type={'text'} {...register('name', { required: true })} />
         <NameInput>Email</NameInput>
-        <Input
-          type={'email'}
-          {...register('email', { required: true })}
-        />
+        <Input type={'email'} {...register('email', { required: true })} />
         <NameInput>Password</NameInput>
         <Input
           type={'password'}

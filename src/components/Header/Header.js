@@ -1,29 +1,23 @@
-import { SignUp, SignIn } from './Header.styled';
-import {
-  HeaderDox,
-  Wrapper,
-  Logo,
-  ContactBookText,
-  ButtonWrapper,
-  NavLogo,
-} from './Header.styled';
-import logo from 'images/logo.png';
+import { HeaderDox, Wrapper } from './Header.styled';
 import { Video } from '../Hero/Video';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from 'hooks/useAuth';
+import {
+  LogoNavToMain,
+  LogoNavToContacts,
+} from 'components/Navigations/LogoNav';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const Header = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <>
       <HeaderDox>
         <Wrapper>
-          <NavLogo to="/">
-            <Logo src={logo} alt="logo" />
-            <ContactBookText>Contact book</ContactBookText>
-          </NavLogo>
-          <ButtonWrapper>
-            <SignUp to="/signup">Sign Up</SignUp>
-            <SignIn to="/signin">Sign In</SignIn>
-          </ButtonWrapper>
+          {isLoggedIn ? <LogoNavToContacts /> : <LogoNavToMain />}
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </Wrapper>
         <Video />
       </HeaderDox>

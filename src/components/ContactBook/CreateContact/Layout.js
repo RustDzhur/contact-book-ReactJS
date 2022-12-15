@@ -10,14 +10,18 @@ import {
   Label,
 } from './CreateContact.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faMailBulk } from '@fortawesome/free-solid-svg-icons';
 
 export const Layout = ({
   onChangeState,
-  name,
-  setName,
+  firstName,
+  setFirstName,
+  secondName,
+  setSecondName,
   phoneNum,
   setPhoneNum,
+  email,
+  setEmail,
 }) => {
   return (
     <Wrapper>
@@ -36,13 +40,30 @@ export const Layout = ({
             </IconsUser>
             <Input
               type="text"
-              name="name"
+              name="firstName"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              placeholder="Full name"
+              placeholder="First name"
               autoComplete="off"
-              value={name}
-              onChange={event => setName(event.target.value)}
+              value={firstName}
+              onChange={event => setFirstName(event.target.value)}
+              required
+            />
+          </Label>
+          <br />
+          <Label>
+            <IconsUser>
+              <FontAwesomeIcon icon={faUser} />
+            </IconsUser>
+            <Input
+              type="text"
+              name="secondName"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              placeholder="Second name"
+              autoComplete="off"
+              value={secondName}
+              onChange={event => setSecondName(event.target.value)}
               required
             />
           </Label>
@@ -60,6 +81,21 @@ export const Layout = ({
               value={phoneNum}
               onChange={event => setPhoneNum(event.target.value)}
               autoComplete="off"
+              required
+            />
+          </Label>
+          <br />
+          <Label>
+            <IconsUser>
+              <FontAwesomeIcon icon={faMailBulk} />
+            </IconsUser>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              autoComplete="off"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
               required
             />
           </Label>

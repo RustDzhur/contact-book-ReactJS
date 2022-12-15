@@ -2,8 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {removeContact} from './contactSlice'
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',

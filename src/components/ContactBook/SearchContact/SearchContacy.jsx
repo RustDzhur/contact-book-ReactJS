@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Layout } from './Layout';
-import { filterContact } from 'redux/contactBook/contactSlice';
-import { deleteContacts } from 'redux/contactBook/operations';
-import {getStateContactsUsers, filterContactsUsers} from 'redux/contactBook/selectors'
+import { filterContact } from '../../redux/contactSlice';
+import { deleteContacts } from '../../redux/operations';
 
 export function SearchContact() {
-  const { items } = useSelector(getStateContactsUsers);
-  const filterValue = useSelector(filterContactsUsers);
+  const { items } = useSelector(state => state.user.contacts);
+  const filterValue = useSelector(state => state.user.filter);
   const dispatch = useDispatch();
 
   const [checked, setChecked] = useState(false);
@@ -34,7 +33,9 @@ export function SearchContact() {
   const normilizedFilter = filterValue.toLowerCase();
   const filterContacts = items.filter(
     contact =>
-      contact.name.toLowerCase().includes(normilizedFilter));
+      contact.firstName.toLowerCase().includes(normilizedFilter) ||
+      contact.secondName.toLowerCase().includes(normilizedFilter)
+  );
 
   return (
     <Layout

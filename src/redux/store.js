@@ -23,8 +23,8 @@ const persistedReducer = persistReducer(persistConfig, authReducer.reducer);
 
 export const store = configureStore({
   reducer: {
+    auth: persistedReducer,
     user: constactSlice.reducer,
-    auth: persistedReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

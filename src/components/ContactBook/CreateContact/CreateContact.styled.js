@@ -1,19 +1,16 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  position: relative;
+position:relative;
   width: 320px;
-  height: 420px;
+  height: 537px;
   background: #ffffff;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   padding-bottom: 30px;
-  @media screen and (max-width: 640px) {
-    margin-bottom: 20px;
-  }
-  @media screen and (min-width: 640px) {
-    margin-right: 20px;
-  }
+  margin-bottom: 20px;
+  margin-right:20px;
+  ${'' /* margin-right: 30px; */}
 `;
 
 export const Header = styled.div`
@@ -78,7 +75,7 @@ export const Background = styled.div`
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   width: 100%;
-  height: 160px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,26 +91,27 @@ export const CardForm = styled.div`
     3px 6px 6px rgba(67, 67, 67, 0.25);
   border-radius: 15px;
   width: 280px;
-  height: 120px;
-  text-align: center;
+  height: 185px;
+  text-align:center;
   margin: 0 auto;
   padding-top: 20px;
 `;
 
 export const Input = styled.input`
-  margin-left: 15px;
-  margin-bottom: 10px;
-  border: none;
-  border-bottom: 1px solid #000000;
-  outline: none;
-`;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+`
 
 export const IconsUser = styled.div`
-  color: #add100;
-  font-size: 18px;
-`;
+    color: #add100;
+    font-size: 18px;
+    
+`
 
 export const Label = styled.label`
-  display: flex;
-  justify-content: center;
-`;
+    display: flex;
+    justify-content: center;
+`

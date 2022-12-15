@@ -2,20 +2,21 @@ import { useSelector } from 'react-redux';
 import {
   Wrapper,
   Header,
-  HeadContainer,
   HeaderTest,
-  SearchLabel,
   InputSearch,
   MyContacts,
   FaceContact,
   ListItem,
   FirstName,
+  SecondName,
   NameContainer,
+  EmailText,
+  EmailContainer,
   ContactContainer,
   InputCheckBox,
   CreateButton,
 } from './SearchContact.styled';
-import manContact from 'images/manContact.png';
+import manContact from '../../images/manContact.png';
 import { Spinner } from 'loader/spinner';
 
 export const Layout = ({
@@ -29,18 +30,16 @@ export const Layout = ({
   return (
     <Wrapper>
       <Header>
-        <HeadContainer>
-          <HeaderTest>Search contacts</HeaderTest>
-          <CreateButton onClick={handelDeleteContact}>Delete</CreateButton>
-        </HeadContainer>
+        <HeaderTest>Search contacts</HeaderTest>
+        <CreateButton onClick={handelDeleteContact}>Delete</CreateButton>
         <form>
-          <SearchLabel>
+          <label>
             <InputSearch
               type="text"
               placeholder="search contact"
               onChange={handlFilterContacts}
             />
-          </SearchLabel>
+          </label>
         </form>
       </Header>
       <MyContacts>My contacts</MyContacts>
@@ -50,25 +49,31 @@ export const Layout = ({
       {isLoading === 'loading' && <Spinner />}
       {isLoading === 'resolved' && (
         <ul>
-          {filterContacts.map(({ id, name, phoneNum }) => (
-            <ListItem key={id}>
-              <FaceContact src={manContact} alt="face" />
-              <ContactContainer>
-                <NameContainer>
-                  <FirstName>{name}</FirstName>
-                  <p>{phoneNum}</p>
-                </NameContainer>
-              </ContactContainer>
-              <InputCheckBox
-                type="radio"
-                value={checked}
-                onChange={() => {
-                  handelCheckedContact(id);
-                }}
-                name="checkContact"
-              />
-            </ListItem>
-          ))}
+          {filterContacts.map(
+            ({ id, firstName, secondName, phoneNum, email }) => (
+              <ListItem key={id}>
+                <FaceContact src={manContact} alt="face" />
+                <ContactContainer>
+                  <NameContainer>
+                    <FirstName>{firstName}</FirstName>
+                    <SecondName>{secondName}</SecondName>
+                  </NameContainer>
+                  <EmailContainer>
+                    <p>{phoneNum}</p>
+                    <EmailText>{email}</EmailText>
+                  </EmailContainer>
+                </ContactContainer>
+                <InputCheckBox
+                  type="radio"
+                  value={checked}
+                  onChange={() => {
+                    handelCheckedContact(id);
+                  }}
+                  name="checkContact"
+                />
+              </ListItem>
+            )
+          )}
         </ul>
       )}
     </Wrapper>

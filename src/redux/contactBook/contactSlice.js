@@ -41,10 +41,10 @@ export const constactSlice = createSlice({
         state.contacts.isLoading = 'rejected';
         state.contacts.error = action.payload;
       })
-      .addCase(addNewContact.pending, state => {
-        state.contacts.isLoading = 'loading';
-        state.contacts.error = null;
-      })
+      // .addCase(addNewContact.pending, state => {
+      //   state.contacts.isLoading = 'loading';
+      //   state.contacts.error = null;
+      // })
       .addCase(addNewContact.fulfilled, (state, action) => {
         state.contacts.items = [action.payload, ...state.contacts.items];
         state.contacts.error = null;

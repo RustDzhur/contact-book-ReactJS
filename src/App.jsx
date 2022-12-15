@@ -4,9 +4,19 @@ import './styles/App.css';
 import { SignIn } from 'components/SignIn/SignIn';
 import { SignUp } from './components/SignUp/SignUp';
 import { ContactBook } from 'components/ContactBook/ContactBook';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
+import {Spinner} from 'loader/spinner'
 
 export function App() {
-  return (
+  const dispatch = useDispatch()
+  const {isRefreshing} = useAuth()
+  useEffect (() => {
+    dispatch(refreshUser())
+  }, [dispatch])
+  return isRefreshing ? (<Spinner/>) :(
     <Routes>
       <Route path="/" element={<Header />}>
         <Route path="signin" element={<SignIn />} />

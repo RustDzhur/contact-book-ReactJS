@@ -9,7 +9,7 @@ export const FormTitle = styled.p`
   margin-bottom: 10px;
 `;
 
-export const Form = styled.form`
+export const FormStyles = styled.form`
   display: flex;
   flex-direction: column;
 `;

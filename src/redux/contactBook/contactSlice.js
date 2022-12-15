@@ -23,36 +23,37 @@ export const constactSlice = createSlice({
       state.filter = action.payload;
     },
   },
-  extraReducers: {
-    [fetchContacts.pending]: state => {
-      state.contacts.isLoading = 'loading';
-      state.contacts.error = null;
-    },
-    [fetchContacts.fulfilled]: (state, action) => {
-      state.contacts.isLoading = 'resolved';
-      state.contacts.items = action.payload;
-    },
-    [fetchContacts.rejected]: (state, action) => {
-      state.contacts.isLoading = 'rejected';
-      state.contacts.error = action.payload;
-    },
-    [deleteContacts.rejected]: (state, action) => {
-      state.contacts.isLoading = 'rejected';
-      state.contacts.error = action.payload;
-    },
-    // [addNewContact.pending]: state => {
-    //   state.contacts.isLoading = 'loading';
-    //   state.contacts.error = null;
-    // },
-    [addNewContact.fulfilled]: (state, action) => {
-      state.contacts.items = [action.payload, ...state.contacts.items];
-      state.contacts.error = null;
-      console.log(action.payload)
-    },
-    [addNewContact.rejected]: (state, action) => {
-      state.contacts.isLoading = 'rejected';
-      state.contacts.error = action.payload;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.pending, state => {
+        state.contacts.isLoading = 'loading';
+        state.contacts.error = null;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.contacts.isLoading = 'resolved';
+        state.contacts.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.contacts.isLoading = 'rejected';
+        state.contacts.error = action.payload;
+      })
+      .addCase(deleteContacts.rejected, (state, action) => {
+        state.contacts.isLoading = 'rejected';
+        state.contacts.error = action.payload;
+      })
+      .addCase(addNewContact.pending, state => {
+        state.contacts.isLoading = 'loading';
+        state.contacts.error = null;
+      })
+      .addCase(addNewContact.fulfilled, (state, action) => {
+        state.contacts.items = [action.payload, ...state.contacts.items];
+        state.contacts.error = null;
+        console.log(action.payload);
+      })
+      .addCase(addNewContact.rejected, (state, action) => {
+        state.contacts.isLoading = 'rejected';
+        state.contacts.error = action.payload;
+      });
   },
 });
 

@@ -1,50 +1,50 @@
 import { createPortal } from 'react-dom';
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useAuth } from 'hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Form, Input, FormTitle, NameInput, Button } from './SignIn.styled';
+import { Form } from './Form';
+import { FormTitle } from './SignIn.styled';
+import { MotionAnimation } from 'components/MotionAnimation/MotionAnimation';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operations';
 const signInModal = document.querySelector('#signin-root');
 
 export const SignIn = () => {
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: { email: '', password: '' } });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    dispatch(logIn(data));
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/contacts');
+      reset({
+        email: '',
+        password: '',
+      });
+    }
+  }, [isLoggedIn, navigate, reset]);
 
   return createPortal(
-    <motion.div
-      style={{ translateX: '-50%', translateY: '-50%' }}
-      className="signInModal"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        default: {
-          duration: 0.3,
-          ease: [0, 0.71, 0.2, 1.01],
-        },
-        scale: {
-          type: 'spring',
-          damping: 5,
-          stiffness: 100,
-          restDelta: 0.001,
-        },
-      }}
-    >
+    <MotionAnimation>
       <FormTitle>Login form</FormTitle>
-      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <NameInput>Email</NameInput>
-        <Input type={'email'} {...register('email', { required: true })} />
-        <NameInput>Password</NameInput>
-        <Input
-          type={'password'}
-          {...register('password', { required: true })}
-        />
-        {errors.exampleRequired && <span>This field is required</span>}
-        <Button type="submit">Log in</Button>
-      </Form>
-    </motion.div>,
+      <Form
+        register={register}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
+    </MotionAnimation>,
     signInModal
   );
 };

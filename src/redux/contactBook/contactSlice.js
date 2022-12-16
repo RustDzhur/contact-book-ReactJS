@@ -13,12 +13,6 @@ export const constactSlice = createSlice({
   },
 
   reducers: {
-    removeContact(state, action) {
-      const index = state.contacts.items.findIndex(
-        state => state.id === action.payload
-      );
-      state.contacts.items.splice(index, 1);
-    },
     filterContact(state, action) {
       state.filter = action.payload;
     },
@@ -41,10 +35,10 @@ export const constactSlice = createSlice({
         state.contacts.isLoading = 'rejected';
         state.contacts.error = action.payload;
       })
-      // .addCase(addNewContact.pending, state => {
-      //   state.contacts.isLoading = 'loading';
-      //   state.contacts.error = null;
-      // })
+      .addCase(addNewContact.pending, state => {
+        state.contacts.isLoading = 'loading';
+        state.contacts.error = null;
+      })
       .addCase(addNewContact.fulfilled, (state, action) => {
         state.contacts.items = [action.payload, ...state.contacts.items];
         state.contacts.error = null;

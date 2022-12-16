@@ -21,7 +21,7 @@ export function App() {
       <Route path="/" element={<Header />}>
         <Route path="signin" element={<SignIn />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="contacts" element={isLoggedIn ? <ContactBook /> : <SignIn />} />
+        <Route path="contacts" element={isLoggedIn && !isRefreshing ? <ContactBook /> : <SignIn />} />
       </Route>
     </Routes>
   );

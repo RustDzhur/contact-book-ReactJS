@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Layout } from './Layout';
-import { filterContact } from '../../redux/contactSlice';
-import { deleteContacts } from '../../redux/operations';
+import { filterContact } from 'redux/contactBook/contactSlice';
+import { deleteContacts } from 'redux/contactBook/operations';
 
 export function SearchContact() {
   const { items } = useSelector(state => state.user.contacts);

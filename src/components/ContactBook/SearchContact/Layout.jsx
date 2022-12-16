@@ -16,7 +16,7 @@ import {
   InputCheckBox,
   CreateButton,
 } from './SearchContact.styled';
-import manContact from '../../images/manContact.png';
+import manContact from 'images/manContact.png';
 import { Spinner } from 'loader/spinner';
 
 export const Layout = ({

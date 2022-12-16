@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewContact, fetchContacts } from '../../redux/operations';
+import { addNewContact, fetchContacts } from 'redux/contactBook/operations';
 import { Layout } from './Layout';
 
 export function CreateContact() {

@@ -12,7 +12,7 @@ import {Spinner} from 'loader/spinner'
 
 export function App() {
   const dispatch = useDispatch()
-  const {isRefreshing} = useAuth()
+  const {isRefreshing, isLoggedIn} = useAuth()
   useEffect (() => {
     dispatch(refreshUser())
   }, [dispatch])
@@ -21,7 +21,7 @@ export function App() {
       <Route path="/" element={<Header />}>
         <Route path="signin" element={<SignIn />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="contacts" element={<ContactBook />} />
+        <Route path="contacts" element={isLoggedIn ? <ContactBook /> : <SignIn />} />
       </Route>
     </Routes>
   );

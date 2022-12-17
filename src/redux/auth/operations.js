@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://6390ec4365ff41831122bf15.mockapi.io/api/v1/';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -39,31 +37,28 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk(
-  'auth/logOut',
+export const logOut = createAsyncThunk('auth/logOut', async (_, thunAPI) => {
+  try {
+    await axios.post('/users/logout');
+    clearAuthoHeader();
+  } catch (error) {
+    return thunAPI.rejectWithValue(error.message);
+  }
+});
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
   async (_, thunAPI) => {
+    const state = thunAPI.getState().auth.token;
+    if (!state) {
+      return thunAPI.rejectWithValue('No valid Token');
+    }
+    setAuthHeader(state);
     try {
-      await axios.post('/users/logout');
-      clearAuthoHeader();
+      const response = await axios.get('users/current');
+      return response.data;
     } catch (error) {
       return thunAPI.rejectWithValue(error.message);
     }
   }
 );
-
-export const refreshUser = createAsyncThunk (
-  'auth/refresh',
-  async (_, thunAPI) => {
-    const state = thunAPI.getState().auth.token
-    if (!state) {
-      return thunAPI.rejectWithValue('No valid Token')
-    }
-    setAuthHeader(state)
-    try {
-      const response = await axios.get('users/current')
-      return response.data
-    } catch (error) {
-      return thunAPI.rejectWithValue(error.message)
-    }
-  }
-)

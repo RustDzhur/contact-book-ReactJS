@@ -32,7 +32,7 @@ export const authReducer = createSlice({
         state.isLoggedIn = false;
         state.token = null;
       })
-      .addCase(refreshUser.pending, (state, action) => {
+      .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
@@ -40,7 +40,7 @@ export const authReducer = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false
       })
-      .addCase(refreshUser.rejected, (state, action) => {
+      .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false
       })
   },

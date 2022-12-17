@@ -11,7 +11,6 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const Header = () => {
   const { isLoggedIn } = useAuth();
-
   return (
     <>
       <HeaderDox>

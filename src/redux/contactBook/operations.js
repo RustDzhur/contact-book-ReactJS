@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {removeContact} from './contactSlice'
+import { removeContact } from './contactSlice';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 

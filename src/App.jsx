@@ -9,13 +9,24 @@ import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import {Spinner} from 'loader/spinner'
+import toast from 'react-hot-toast'
+
+
 
 export function App() {
   const dispatch = useDispatch()
   const {isRefreshing, isLoggedIn} = useAuth()
   useEffect (() => {
+    toast.error('Hello, try to Log in', {
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    })
     dispatch(refreshUser())
   }, [dispatch])
+
   return isRefreshing ? (<Spinner/>) :(
     <Routes>
       <Route path="/" element={<Header />}>

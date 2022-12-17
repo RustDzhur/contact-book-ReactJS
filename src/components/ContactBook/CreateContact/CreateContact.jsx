@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
 import { addNewContact, fetchContacts } from 'redux/contactBook/operations';
 import { getStateContactsUsers } from 'redux/contactBook/selectors';
 import { Layout } from './Layout';

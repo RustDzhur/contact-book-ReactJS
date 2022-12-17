@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {removeContact} from './contactSlice'
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -20,6 +21,7 @@ export const deleteContacts = createAsyncThunk(
   async function (id, thunkAPI) {
     try {
       await axios.delete(`/contacts/${id}`);
+      thunkAPI.dispatch(removeContact(id));
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

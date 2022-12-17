@@ -50,13 +50,13 @@ export const Layout = ({
       {isLoading === 'loading' && <Spinner />}
       {isLoading === 'resolved' && (
         <ul>
-          {filterContacts.map(({ id, name, phoneNum }) => (
+          {filterContacts.map(({ id, name, number }) => (
             <ListItem key={id}>
               <FaceContact src={manContact} alt="face" />
               <ContactContainer>
                 <NameContainer>
                   <FirstName>{name}</FirstName>
-                  <p>{phoneNum}</p>
+                  <p>{number}</p>
                 </NameContainer>
               </ContactContainer>
               <InputCheckBox

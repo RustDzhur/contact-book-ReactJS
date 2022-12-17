@@ -16,8 +16,8 @@ export const Layout = ({
   onChangeState,
   name,
   setName,
-  phoneNum,
-  setPhoneNum,
+  number,
+  setNumber,
 }) => {
   return (
     <Wrapper>
@@ -57,8 +57,8 @@ export const Layout = ({
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               placeholder="Phone"
-              value={phoneNum}
-              onChange={event => setPhoneNum(event.target.value)}
+              value={number}
+              onChange={event => setNumber(event.target.value)}
               autoComplete="off"
               required
             />

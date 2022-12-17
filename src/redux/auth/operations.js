@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast'
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -32,6 +33,13 @@ export const logIn = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
+      toast.error('Hey man, you made mistake!!!', {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+      });
       return thunAPI.rejectWithValue(error.message);
     }
   }

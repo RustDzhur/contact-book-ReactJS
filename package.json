@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "contact-book-ReactJS",
   "version": "0.1.0",
   "private": true,
-  "homepage": " https://rustdzhur.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://rustdzhur.github.io/contact-book-ReactJS/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
